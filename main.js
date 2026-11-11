@@ -6,12 +6,9 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        addToCart() {
-            const id = this.variants[this.selectedVariant].id
-            console.log('Variante selecionada para o carrinho:', id)
-        }
-    },
-    computed: {
-
+        // addToCart() {
+        //     const id = this.variants[this.selectedVariant].id
+        //     console.log('Variante selecionada para o carrinho:', id)
+        // }
     }
 })
