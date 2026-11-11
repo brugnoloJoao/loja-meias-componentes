@@ -1,18 +1,74 @@
 app.component('product-display', {
     template: /*html*/ `
     <div class="product-display">
-      <!-- Mova para cá o bloco product-display -->
+        <div class="product-container">
+          <div class="product-image">
+            <img v-bind:src="image">
+          </div>
+          <div class="product-info">
+            <h1>{{ title }}</h1>
+            <!-- solution -->
+            <p>{{ sale }}</p>
+            <!-- solution -->
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
+            <ul>
+              <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+
+            <div 
+              v-for="(variant, index) in variants" 
+              :key="variant.id" 
+              @mouseover="updateVariant(index)" 
+              class="color-circle" 
+              :style="{ backgroundColor: variant.color }">
+            </div>
+            
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
     </div>
   `,
     data() {
         return {
-            // Dados do produto sem cart
+            product: 'Socks',
+            brand: 'Vue Mastery',
+            selectedVariant: 0,
+            details: ['50% cotton', '30% wool', '20% polyester'],
+            variants: [
+                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
+                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+            ],
+            // solution
+            onSale: true
+            // solution
         }
     },
     methods: {
-        // Métodos do produto
+        addToCart() {
+            const id = this.variants[this.selectedVariant].id
+            console.log('Variante selecionada para o carrinho:', id)
+        }
+
     },
     computed: {
-        // Cálculos do produto
+        title() {
+            return this.brand + ' ' + this.product
+        },
+        image() {
+            return this.variants[this.selectedVariant].image
+        },
+        inStock() {
+            return this.variants[this.selectedVariant].quantity
+        },
+        // solution
+        sale() {
+            if (this.onSale) {
+                return this.brand + ' ' + this.product + ' is on sale.'
+            }
+            return ''
+        }
+        // solution
     }
 })
