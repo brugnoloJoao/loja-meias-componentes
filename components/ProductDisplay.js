@@ -68,7 +68,19 @@ app.component('product-display', {
                 return this.brand + ' ' + this.product + ' is on sale.'
             }
             return ''
+        },
+        shipping() {
+            if (this.premium) {
+                return 'Free'
+            }
+            return 2.99
         }
         // solution
-    }
+    },
+    props: {
+        premium: {
+            type: Boolean,
+            required: true
+        }
+    },
 })
