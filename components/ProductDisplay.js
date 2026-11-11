@@ -24,12 +24,14 @@ app.component('product-display', {
               :style="{ backgroundColor: variant.color }">
             </div>
             
+            <p>Shipping: {{ shipping }}</p>
+
             <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
           </div>
         </div>
       </div>
     </div>
-  `,
+  `, 
     data() {
         return {
             product: 'Socks',
