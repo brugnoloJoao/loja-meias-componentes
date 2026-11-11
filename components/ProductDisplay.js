@@ -48,11 +48,9 @@ app.component('product-display', {
         }
     },
     methods: {
-        addToCart() {
-            const id = this.variants[this.selectedVariant].id
-            console.log('Variante selecionada para o carrinho:', id)
+        updateVariant(index) {
+            this.selectedVariant = index
         }
-
     },
     computed: {
         title() {

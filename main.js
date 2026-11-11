@@ -2,11 +2,13 @@ const app = Vue.createApp({
     data() {
         return {
             cart: 0,
+            premium: true
         }
     },
     methods: {
         addToCart() {
-            this.cart += 1
+            const id = this.variants[this.selectedVariant].id
+            console.log('Variante selecionada para o carrinho:', id)
         }
     },
     computed: {
