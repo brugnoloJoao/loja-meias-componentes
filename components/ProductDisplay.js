@@ -27,7 +27,6 @@ app.component('product-display', {
             <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
           </div>
         </div>
-      </div>
     </div>
   `,
     data() {
