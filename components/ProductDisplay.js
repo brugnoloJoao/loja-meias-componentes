@@ -12,9 +12,7 @@ app.component('product-display', {
             <!-- solution -->
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
+            <product-details :details="details"></product-details>
 
             <div 
               v-for="(variant, index) in variants" 
@@ -31,7 +29,7 @@ app.component('product-display', {
         </div>
       </div>
     </div>
-  `, 
+  `,
     data() {
         return {
             product: 'Socks',
