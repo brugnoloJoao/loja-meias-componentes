@@ -28,7 +28,6 @@ app.component('product-display', {
           </div>
         </div>
       </div>
-    </div>
   `,
     data() {
         return {
@@ -48,7 +47,12 @@ app.component('product-display', {
     methods: {
         updateVariant(index) {
             this.selectedVariant = index
+        },
+        addToCart() {
+            if (!this.inStock) return;
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
         }
+
     },
     computed: {
         title() {
@@ -81,4 +85,5 @@ app.component('product-display', {
             required: true
         }
     },
+    emits: ['add-to-cart']
 })
