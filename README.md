@@ -1,3 +1,8 @@
+Nome: João Pedro Alves Brugnolo
+
+Para executar o projeto:
+Abrir o arquivo index.html diretamente em seu navegador ou Utilize a extensão Live Server clicando no botão Go Live no Visual Studio Code
+
 1. O que retornam Vue.createApp e app.mount e onde cada um é utilizado?
 A instância devolvida por Vue.createApp({...}) não é a aplicação montada, mas a instância da aplicação, guardada na constante app em main.js. É nela que os componentes são registrados, por meio de app.component('product-display', {...}) e app.component('product-details', {...}), e é por isso que main.js precisa ser carregado antes dos arquivos da pasta components/. Já app.mount('#app') retorna a instância do componente raiz, que contém cart e premium, armazenada em mountedApp no script final de index.html. Ela é utilizada no console para testar a raiz, como em mountedApp.premium = false. A montagem vem por último porque os componentes precisam estar registrados antes dela, e não depois.
 2. Quais dados saíram da raiz e foram para product-display? Por que cart permaneceu no pai?
