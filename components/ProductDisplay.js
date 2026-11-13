@@ -12,6 +12,9 @@ app.component('product-display', {
             <!-- solution -->
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
+
+            <p>Shipping: {{ shipping }}</p>
+            
             <product-details :details="details"></product-details>
 
             <div 
@@ -21,8 +24,6 @@ app.component('product-display', {
               class="color-circle" 
               :style="{ backgroundColor: variant.color }">
             </div>
-            
-            <p>Shipping: {{ shipping }}</p>
 
             <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
           </div>
